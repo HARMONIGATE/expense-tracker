@@ -1,0 +1,64 @@
+<div class="w-full max-w-sm mx-auto mt-5">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <!-- Email Input -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Email Id
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="email"
+        type="text"
+        placeholder="Email"
+      />
+    </div>
+
+    <!-- Password Input with Eye Icon -->
+    <div class="mb-6 relative">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Password
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="password"
+        [type]="showPassword ? 'text' : 'password'"
+        placeholder="******************"
+      />
+      <button
+        type="button"
+        (click)="togglePasswordVisibility('password')"
+        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800"
+      >
+        <i [ngClass]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+      </button>
+    </div>
+
+    <!-- Sign In and Sign Up Buttons -->
+    <div class="flex items-center justify-between space-x-4">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        Sign In
+      </button>
+      <button
+      routerLink="/signup" routerLinkActive="active" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        Sign Up
+      </button>
+    </div>
+
+    <!-- Forgot Password Link -->
+    <div class="mt-4">
+      <a routerLink="/forgetPassword" routerLinkActive="active" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        Forgot Password?
+      </a>
+    </div>
+  </form>
+
+  <!-- Footer Text -->
+  <p class="text-center text-gray-500 text-xs">
+    &copy;2024 Harmonigate corp. All rights reserved.
+  </p>
+</div>

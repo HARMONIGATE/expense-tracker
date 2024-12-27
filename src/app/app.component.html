@@ -1,0 +1,83 @@
+<!-- Navigation bar start -->
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img width="45" height="45" src="https://img.icons8.com/fluency/96/money-bag-euro.png" alt="money-bag-euro"/>
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Money Manager</span>
+    </a>
+    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <!-- Profile button -->
+      <button type="button"
+        class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+        id="user-menu-button" aria-expanded="false">
+        <span class="sr-only">Open user menu</span>
+        <img class="w-8 h-8 rounded-full"
+          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt="user photo">
+      </button>
+      <!-- Profile dropdown -->
+      <div class="z-50 hidden" id="user-dropdown">
+        <ul>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Sign out</a></li>
+        </ul>
+      </div>
+      <!-- Mobile menu toggle button -->
+      <button data-collapse-toggle="navbar-user" type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100"
+        id="mobile-menu-button" aria-controls="navbar-user" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+    </div>
+    <!-- Navbar items for large screen -->
+    
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a 
+            routerLink="/dashboard" routerLinkActive="active"
+            (click)="setActiveLink('dashboard')" 
+            [ngClass]="{'text-white bg-blue-700': activeLink === 'dashboard', 'text-gray-900': activeLink !== 'dashboard'}" 
+            class="block py-2 px-3 rounded">
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#" 
+            (click)="setActiveLink('expense')" 
+            [ngClass]="{'text-white bg-blue-700': activeLink === 'expense', 'text-gray-900': activeLink !== 'expense'}" 
+            class="block py-2 px-3 rounded hover:bg-gray-100">
+            Expense
+          </a>
+        </li>
+        <li>
+          <a 
+            href="#" 
+            (click)="setActiveLink('earnings')" 
+            [ngClass]="{'text-white bg-blue-700': activeLink === 'earnings', 'text-gray-900': activeLink !== 'earnings'}" 
+            class="block py-2 px-3 rounded hover:bg-gray-100">
+            Earnings
+          </a>
+        </li>
+        <li>
+          <a 
+            routerLink="/login" routerLinkActive="active"
+            (click)="setActiveLink('login')" 
+            [ngClass]="{'text-white bg-blue-700': activeLink === 'login', 'text-gray-900': activeLink !== 'login'}" 
+            class="block py-2 px-3 rounded hover:bg-gray-100">
+            LogIn
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+</nav>
+<!-- Navigation bar End -->
+<router-outlet />

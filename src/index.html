@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ExpenseTracker</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png">
+</head>
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userMenuButton = document.getElementById("user-menu-button");
+      const userMenuDropdown = document.getElementById("user-dropdown");
+
+      if (userMenuButton && userMenuDropdown) {
+        userMenuButton.addEventListener("click", function() {
+          // Toggle dropdown visibility
+          if (userMenuDropdown.style.display === "block") {
+            userMenuDropdown.style.display = "none"; // Hide the dropdown
+          } else {
+            userMenuDropdown.style.display = "block"; // Show the dropdown
+          }
+        });
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("navbar-user");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          const isMenuVisible = mobileMenu.classList.contains("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", !isMenuVisible);
+        });
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navbarLinks = document.querySelectorAll("#navbar-links a");
+  
+      navbarLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+  
+          // Remove active styles from all links
+          navbarLinks.forEach((lnk) => {
+            lnk.classList.remove("text-white", "bg-blue-700");
+            lnk.classList.add("text-gray-900");
+          });
+  
+          // Add active styles to the clicked link
+          event.currentTarget.classList.add("text-white", "bg-blue-700");
+          event.currentTarget.classList.remove("text-gray-900");
+        });
+      });
+    });
+  </script>
+  
+  <app-root></app-root>
+</body>
+</html>

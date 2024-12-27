@@ -1,0 +1,130 @@
+<div class="w-full max-w-xs mx-auto mt-5">
+  <h3 style="text-align: center;background-color: rgb(78, 127, 233);"><b style="color: white;">Create Account</b></h3>
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- Email Input -->
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Email Id
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="email" type="text" placeholder="Email" formControlName="email" [readonly]="otpSent" />
+      <p *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+        class="text-red-500 text-xs italic">
+        Please enter a valid email.
+      </p>
+    </div>
+    
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        Name
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="name" type="text" placeholder="Name" formControlName="name"/>
+      
+      <!-- Error message block -->
+      <p *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="text-red-500 text-xs italic">
+        <ng-container *ngIf="signupForm.get('name')?.hasError('required')">
+          Name is required.
+        </ng-container>
+        <ng-container *ngIf="signupForm.get('name')?.hasError('minlength')">
+          Name must be at least 5 characters long.
+        </ng-container>
+        <ng-container *ngIf="signupForm.get('name')?.hasError('invalidName')">
+          Name can only contain letters and spaces.
+        </ng-container>
+      </p>
+    </div>
+
+    <!-- Password Inputs -->
+    <div class="mb-6 relative">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password" formControlName="password" />
+      <button
+        type="button"
+        (click)="togglePasswordVisibility('password')"
+        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800"
+      >
+        <i [ngClass]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+      </button>
+    </div>
+
+
+    <div class="mb-6 relative">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
+        Confirm Password
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="confirm-password" [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm Password"
+        formControlName="confirmPassword" />
+        <button
+        type="button"
+        (click)="togglePasswordVisibility('confirmPassword')"
+        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800"
+      >
+        <i [ngClass]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+      </button>
+
+      <p *ngIf="passwordsDoNotMatch" class="text-red-500 text-xs italic">
+        Passwords do not match.
+      </p>
+    </div>
+
+    <!-- OTP Input -->
+    <div *ngIf="otpSent && !otpVerified" class="mb-4">
+      <p class="text-green-500 text-xs italic">
+        OTP successfully sent to your email!
+      </p>
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="otp">
+        OTP
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="otp" type="text" placeholder="Enter OTP" formControlName="otp" />
+    </div>
+    <p *ngIf="otpError" class="text-red-500 text-xs italic">
+      {{ otpError }}
+    </p>
+    <p *ngIf="otpVerified && !submitButtonClicked" class="text-green-500 text-xs italic">
+      Otp verified successfully, click on sign up button to register yourself!
+    </p>
+    <!-- Sign Up and OTP Buttons -->
+    <div class="flex flex-col space-y-4">
+      <!-- Send OTP Button -->
+      <button *ngIf="signupForm.valid && !otpSent"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
+        type="button" (click)="sendOtp()">
+        Send OTP
+      </button>
+
+      <!-- Verify OTP Button -->
+      <button *ngIf="otpSent && !otpVerified"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
+        type="button" (click)="verifyOtp()">
+        Verify OTP
+      </button>
+
+      <!-- Submit Button (Sign Up) -->
+      <p *ngIf="registerError" class="text-red-500 text-xs italic">
+        {{registerErrorMessage}}
+      </p>
+      <p *ngIf="!registerError" class="text-green-500 text-xs italic">
+        {{registrationMessage}}
+      </p>
+      <button *ngIf="signupForm.valid && !passwordsDoNotMatch && otpVerified"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
+        type="submit">
+        Sign Up
+      </button>
+    </div>
+  </form>
+
+  <p class="text-center text-gray-500 text-xs">
+    &copy;2024 Harmonigate corp. All rights reserved.
+  </p>
+</div>
