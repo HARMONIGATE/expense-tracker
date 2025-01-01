@@ -1,0 +1,57 @@
+/* Add padding to the container and some spacing */
+.transaction-container {
+    padding: 16px;
+  }
+  
+  /* Style for each transaction card */
+  .transaction-card {
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .transaction-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Style for the transaction number circle */
+  .transaction-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Style for the transaction title */
+  .transaction-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Style for the transaction details */
+  .transaction-details {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Style for the transaction amount */
+  .transaction-amount {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .transaction-positive {
+    color: green;
+  }
+  
+  .transaction-negative {
+    color: red;
+  }
+  

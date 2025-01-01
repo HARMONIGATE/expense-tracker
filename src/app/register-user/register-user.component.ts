@@ -4,7 +4,7 @@ import { OtpService } from './otp.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgIf ,NgFor,NgClass} from '@angular/common';
 import { RegisterService } from './register.service';
-import { Sign } from 'node:crypto';
+import{Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class RegisterUserComponent {
   submitButtonClicked=false;
 
 
-  constructor(private fb: FormBuilder, private otpService: OtpService, private registerService :RegisterService) {
+  constructor(private fb: FormBuilder, private otpService: OtpService, private registerService :RegisterService,private router:Router) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [
@@ -76,42 +76,37 @@ export class RegisterUserComponent {
       error: (err) => {
         this.otpError = err.message || 'Failed to send OTP'; // Set the error message
         this.otpSent = false; // Reset OTP sent status
-        console.log(this.otpError);
       },
     });
   }
 
   verifyOtp() {
     const enteredOtp = this.signupForm.get('otp')?.value;
-    console.log(this.signupForm.get('otp')?.value);
-    console.log(this.generatedOtp);
     if (this.generatedOtp === enteredOtp) {
       this.otpVerified = true;
       this.otpError = '';
-      console.log("OTP verified");
     } else {
       this.otpVerified = false;
       this.otpError = 'Invalid OTP. Please try again.';
-      console.log("OTP not verified");
     }
   }
 
 
   registerUser() {
-    console.log('sign up button clieked');
     const email = this.signupForm.get('email')?.value;
     const pass=this.signupForm.get('password')?.value;
     const name=this.signupForm.get('name')?.value;
-    console.log(email+pass+name);
     this.registerService.registerUser(email,pass,name).subscribe({
       next: (successMessage) => {
         this.registrationMessage = successMessage; // save error message locally
-        console.log(this.registrationMessage);
+        // Navigate to another route after 2 seconds
+                  setTimeout(() => {
+                    this.router.navigate(['/login']);
+                  }, 2000);  // 2000 ms = 2 seconds
       },
       error: (err) => {
         this.registerErrorMessage = err.message || 'Failed to send OTP'; // Set the error message
         this.registerError = true; // Reset OTP sent status
-        console.log(this.registerErrorMessage);
       },
     });
   }
@@ -135,7 +130,6 @@ noNumbersOrSpecialCharacters(control: AbstractControl): ValidationErrors | null 
       this.submitButtonClicked=true;
       //Register user
       this.registerUser();
-
     }
   }
   

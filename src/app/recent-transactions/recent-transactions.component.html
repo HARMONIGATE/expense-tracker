@@ -1,0 +1,25 @@
+<div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Recent Transactions</h2>
+  
+    <div class="space-y-4">
+      <!-- Loop through each transaction -->
+      <div *ngFor="let transaction of transactions; let i = index" class="flex items-center justify-between p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+        <div class="flex items-center space-x-4">
+          <!-- Circle for transaction number -->
+          <div class="w-12 h-12 text-white rounded-full flex items-center justify-center">
+            <img width="30" height="30" [src]="transaction.imageId" alt="plus--v1"/>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800">{{transaction.categoryType}}</h3>
+          </div>
+        </div>
+        <p *ngIf="transaction.categoryName==='Earning'" class="text-xl font-semibold text-green-500" >
+          {{transaction.amount | currency:'INR'}}
+        </p>
+        <p *ngIf="transaction.categoryName==='Expense'" class="text-xl font-semibold text-red-500" >
+          {{transaction.amount | currency:'INR'}}
+        </p>
+      </div>
+    </div>
+  </div>
+  

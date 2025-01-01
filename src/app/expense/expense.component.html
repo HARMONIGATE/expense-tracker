@@ -1,0 +1,13 @@
+<!-- Expenses Card -->
+<div class="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden w-full lg:w-1/3" style="width: 100%;">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-red-600"></div>
+  <div class="flex items-center">
+    <div class="p-4 bg-red-100 rounded-full">
+      <img width="48" height="48" src="https://img.icons8.com/color/48/tax.png" alt="tax" />
+    </div>
+    <div class="ml-6">
+      <h2 class="text-xl font-semibold text-gray-700">Total Expenses this year</h2>
+      <p class="text-3xl font-bold text-red-600">{{totalExpense|currency:'INR'}}</p>
+    </div>
+  </div>
+</div>

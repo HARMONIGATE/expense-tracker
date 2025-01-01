@@ -1,0 +1,8 @@
+/* Ensure the content container spans the full height of the screen */
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh; /* Use full viewport height */
+}

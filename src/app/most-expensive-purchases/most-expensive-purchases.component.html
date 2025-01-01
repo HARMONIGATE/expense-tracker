@@ -1,0 +1,27 @@
+<div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-5xl">
+  <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">Most Expensive Purchases of the Year</h2>
+
+  <!-- Purchase Cards Section -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Card for Each Purchase -->
+    <div *ngFor="let item of transactions" class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+      <div class="flex items-center space-x-4">
+        <!-- Icon -->
+        <div class="bg-blue-500 text-white p-3 rounded-full">
+          <img width="30" height="30" [src]="item.emageID" alt="plus--v1" />
+        </div>
+
+        <!-- Purchase Details -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800">{{ item.categoryName }}</h3>
+          <p class="text-gray-500 text-sm">{{ item.shortNote }}</p>
+        </div>
+      </div>
+
+      <!-- Amount -->
+      <div class="mt-4">
+        <p class="text-2xl font-bold text-red-600">{{ item.amount | currency: 'INR' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

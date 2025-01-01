@@ -1,0 +1,45 @@
+<div class="bg-gradient-to-r from-blue-200 via-white to-blue-200 flex items-center justify-center min-h-screen px-4">
+  <div class="bg-white shadow-2xl rounded-lg p-8 max-w-md w-full text-center relative">
+    <!-- Profile Picture -->
+    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-blue-600 shadow-lg relative">
+      <img [src]="user_profile_picture_url" alt="Profile Picture" class="w-full h-full object-cover" />
+      <!-- Update Icon -->
+      <label for="profilePic"
+        class="absolute bottom-2 right-2 bg-blue-600 text-white p-2 rounded-full cursor-pointer shadow-md hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M17.586 5.586a2 2 0 00-2.828 0L8 12.343V15h2.657l6.758-6.758a2 2 0 000-2.828z" />
+          <path fill-rule="evenodd"
+            d="M2 8a2 2 0 012-2h4.586l1 1H4a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1v-3.586l1 1V16a2 2 0 01-2 2H4a2 2 0 01-2-2V8z"
+            clip-rule="evenodd" />
+        </svg>
+      </label>
+      <input type="file" id="profilePic" class="hidden" (change)="onFileSelected($event)"
+        accept="image/jpeg, image/jpg, image/png" />
+    </div>
+
+    <div *ngIf="isError" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+      {{imageErrorMessage}}
+    </div>
+    <div *ngIf="profileUpdated" class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+      {{profileUpdateMessage}}
+    </div>
+    <!-- Name -->
+    <h1 class="mt-6 text-3xl font-bold text-gray-800">{{user_name}}</h1>
+
+    <!-- Email -->
+    <p class="mt-2 text-gray-600 text-lg">{{user_email}}</p>
+
+    <!-- Registration Date -->
+    <p class="mt-4 text-gray-500 text-sm">Registered on: <span
+        class="font-medium text-gray-800">{{user_resistration_date}}</span></p>
+
+    <!-- Divider -->
+    <hr class="my-6 border-gray-300" />
+
+    <!-- Save Changes Button -->
+    <button
+      class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-full font-medium shadow-lg transition transform hover:scale-105" (click)="saveChanges()">
+      Save Changes
+    </button>
+  </div>
+</div>

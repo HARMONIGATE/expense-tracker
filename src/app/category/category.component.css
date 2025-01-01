@@ -1,0 +1,13 @@
+  /* Apply a simple border to rounded items */
+  .simple-border {
+    border-radius: 1rem;
+    border: 1px solid #d1d5db; /* Light gray border */
+  }
+
+  /* Additional Tailwind CSS customization if needed */
+.modal {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center;
+}
+.modal-content {
+  @apply bg-white p-6 rounded-md w-96 shadow-lg;
+}
