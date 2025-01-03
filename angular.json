@@ -16,6 +16,10 @@
             "outputPath": "dist/expense-tracker",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "allowedCommonJsDependencies": [
+              "apexcharts",
+              "ng-apexcharts"
+            ],
             "polyfills": [
               "zone.js"
             ],
@@ -46,13 +50,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "20000kb",
+                  "maximumError": "40000kb"
                 }
               ],
               "outputHashing": "all"

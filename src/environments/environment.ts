@@ -3,8 +3,8 @@ import { profile } from "console";
 export const environment = {
     production: false,
     baseurl:'http://localhost:5555',
-    userid:'Administrator',
-    password:'8658003976@Aloke',
+    userid:'appuser',
+    password:'Qwertyuiop@123',
 
     //image kit API details
     imageKitApiUrl:'https://upload.imagekit.io/api/v1/files/upload',

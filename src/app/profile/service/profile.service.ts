@@ -56,7 +56,6 @@ export class ProfileService {
           }
         }),
         catchError((error) => {
-          console.error('Upload failed:', error);
           return throwError(() => new Error('Error occurred during file upload'));
         })
       );

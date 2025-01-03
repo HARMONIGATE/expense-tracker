@@ -66,7 +66,6 @@ export class LoginUserComponent {
   // Get Device Info (OS)
   getDeviceInfo(): void {
     const userAgent = navigator.userAgent;
-    console.log('agent data '+userAgent)
     if (userAgent.indexOf("Windows NT") > -1) {
       this.os = 'Windows';
       this.deviceType = 'Desktop';
@@ -121,16 +120,14 @@ loginUser(){
   this.loginService.LogInUser(email,pass,this.clientInfo).subscribe({
     next: (successMessage) => {
       this.logInMessage = successMessage; 
-      console.log(this.logInMessage);
       // save error message locally
       // Navigate to another route after 2 seconds
                 setTimeout(() => {
-                  window.location.reload();
+                  this.router.navigate(['/dashboard']);
                 }, 2000);  // 2000 ms = 2 seconds
     },
     error: (err) => {
       this.logInErrorMessage = err.message || 'failed to login'; // Set the error message
-      console.log(this.logInErrorMessage);
       this.loginError = true; // Reset OTP sent status
     },
   });
@@ -144,7 +141,6 @@ loginUser(){
   onSubmit() {
     const email = this.loginForm.get('email')?.value;
     const pass = this.loginForm.get('password')?.value;
-    console.log('Email:', email, 'Password:', pass);
     this.loginUser();
   }
 

@@ -32,10 +32,10 @@ export class IncomeExpenceDetailsComponent {
   startDate: string = '';
   endDate: string = '';
   transactions: any[] = [];
-  savingTotal: string = '';
-  earningsTotal: string = '';
-  expenseTotal: string = '';
-  amountLeft:string=';'
+  savingTotal: string = '0';
+  earningsTotal: string = '0';
+  expenseTotal: string = '0';
+  amountLeft:string='0';
 
 
   //delete temp variables
@@ -78,6 +78,7 @@ export class IncomeExpenceDetailsComponent {
           data.totalAmount.expenseTotal - 
           data.totalAmount.savingTotal
         ).toString();
+        
       },
       error: (err) => {
         this.loadErrorMessage = err.message;  // Set error message

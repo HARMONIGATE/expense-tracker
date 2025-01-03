@@ -46,10 +46,11 @@ export class CategoryService {
     );
   }
 
-  createCategory(email: string, categoryName: string, categoryType: string, imageUrl: string): Observable<string> {
+  createCategory(categoryName: string, categoryType: string, imageUrl: string): Observable<string> {
     const headers = this.apiGetHeaders()
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json');
+      const email=this.cookieService.get('current-User');
     const body = { email, categoryName, categoryType, imageUrl };
   
     return this.http.post<any>(this.createCategoryURL, body, { headers }).pipe(

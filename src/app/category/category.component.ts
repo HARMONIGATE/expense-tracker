@@ -76,7 +76,7 @@ export class CategoryComponent {
   // Handle form submission
   onSubmit() {
     if (this.newCategory.name && this.newCategory.type && this.newCategory.image) {
-      this.categoryService.createCategory(this.currentUserEmail, this.newCategory.name, this.newCategory.type, this.newCategory.image).subscribe({
+      this.categoryService.createCategory(this.newCategory.name, this.newCategory.type, this.newCategory.image).subscribe({
         next: (successMessage) => {
           this.categoryMessage = successMessage;
           this.categoryError=false;

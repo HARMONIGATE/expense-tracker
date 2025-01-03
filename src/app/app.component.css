@@ -1,33 +1,61 @@
+/* Ensure the profile button has relative positioning */
+#user-menu-button {
+  position: relative; /* Position for dropdown alignment */
+}
+
 /* Ensure the dropdown appears below the button */
 #user-dropdown {
-    position: absolute;
-    top: 50px; /* Adjust as needed */
-    right: 0;
-    width: 200px;
-    display: none; /* Initially hidden */
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 50;
+  position: absolute;
+  top: 100%; /* Places the dropdown exactly below the profile button */
+  left: 0; /* Aligns the dropdown to the left of the profile button */
+  width: 200px; /* Set a fixed width for the dropdown */
+  display: none; /* Initially hidden */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  margin-top: 8px; /* Adds a little space between the profile button and the dropdown */
+}
+
+/* Dropdown items styling */
+#user-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#user-dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#user-dropdown li:last-child {
+  border-bottom: none;
+}
+
+#user-dropdown li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+#user-dropdown li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Prevent the dropdown from overflowing the screen */
+#user-dropdown {
+  max-width: 90vw;  /* Prevent overflow */
+  left: auto;  /* Ensure it doesn't go too far left */
+  right: 0;  /* Align to the right of the profile button */
+}
+
+/* Mobile view adjustments */
+@media (max-width: 767px) {
+  #user-dropdown {
+    width: 100%;  /* Ensure dropdown spans the full width on small screens */
+    left: 0;  /* Align to the left edge of the screen */
+    right: 0;  /* Ensure it's aligned to the screen edge */
   }
-  #user-dropdown ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  #user-dropdown li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  #user-dropdown li:last-child {
-    border-bottom: none;
-  }
-  #user-dropdown li a {
-    color: #333;
-    text-decoration: none;
-    display: block;
-  }
-  #user-dropdown li a:hover {
-    background-color: #f0f0f0;
-  }
+}

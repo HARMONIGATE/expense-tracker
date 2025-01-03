@@ -160,7 +160,7 @@
                                 currency:'INR':'symbol' }}</b></td>
                         <td *ngIf="item.CATEGORY_NAME === 'Saving'" class="px-4 py-2 text-blue-600"><b>{{ item.AMOUNT |
                                 currency:'INR':'symbol' }}</b></td>
-                        <td class="px-4 py-2">10th October 2023</td>
+                        <td class="px-4 py-2">{{item.TRANSACTION_DATE}}</td>
                         <td class="px-4 py-2 text-center">
                             <button (click)="onDelete(item.ID)">
                                 <img width="35" height="35" src="https://img.icons8.com/color/48/delete-forever.png"

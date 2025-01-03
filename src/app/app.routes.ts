@@ -4,52 +4,51 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { authGuard } from './guard/auth.guard';
-import{redirectIfLoggedInGuard} from './guard/redirect-if-logged-in.guard'
+import { redirectIfLoggedInGuard } from './guard/redirect-if-logged-in.guard'
 import { ExpenseComponent } from './expense/expense.component';
 import { CategoryComponent } from './category/category.component';
 import { ProfileComponent } from './profile/profile.component';
 import { IncomeExpenceDetailsComponent } from './income-expence-details/income-expence-details.component';
 
-
 export const routes: Routes = [
-  { 
-    path: 'login', 
+  {
+    path: 'login',
     component: LoginUserComponent,
     canActivate: [redirectIfLoggedInGuard]  // If logged in, redirect to dashboard
   },
-  { 
-    path: 'signup', 
+  {
+    path: 'signup',
     component: RegisterUserComponent,
     canActivate: [redirectIfLoggedInGuard]  // If logged in, redirect to dashboard
   },
-  { 
-    path: 'forgetPassword', 
+  {
+    path: 'forgetPassword',
     component: ForgetPasswordComponent,
     canActivate: [redirectIfLoggedInGuard]  // If logged in, redirect to dashboard
   },
-  { 
-    path: 'dashboard', 
-    component: UserDashboardComponent, 
+  {
+    path: 'dashboard',
+    component: UserDashboardComponent,
     canActivate: [authGuard]  // Apply the authGuard to protect the dashboard route
   },
-  { 
-    path: 'expense', 
-    component: ExpenseComponent, 
+  {
+    path: 'expense',
+    component: ExpenseComponent,
     canActivate: [authGuard]  // Apply the authGuard to protect the dashboard route
   },
-  { 
-    path: 'category', 
-    component: CategoryComponent, 
+  {
+    path: 'category',
+    component: CategoryComponent,
     canActivate: [authGuard]  // Apply the authGuard to protect the dashboard route
   },
-  { 
-    path: 'profile', 
-    component: ProfileComponent, 
+  {
+    path: 'profile',
+    component: ProfileComponent,
     canActivate: [authGuard]  // Apply the authGuard to protect the dashboard route
   },
-  { 
-    path: 'inconeOrExpense', 
-    component: IncomeExpenceDetailsComponent, 
+  {
+    path: 'inconeOrExpense',
+    component: IncomeExpenceDetailsComponent,
     canActivate: [authGuard]  // Apply the authGuard to protect the dashboard route
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },  // Default to login if no route is matched

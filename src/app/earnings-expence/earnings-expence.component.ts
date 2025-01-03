@@ -115,7 +115,6 @@ earningData:any[]=[];
         ];
       },
       error: (err) => {
-        console.error("Error fetching dashboard info", err);
       },
     });
   }

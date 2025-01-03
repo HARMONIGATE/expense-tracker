@@ -81,12 +81,9 @@ export class ProfileComponent {
 
   // Upload image to Image kit and then update url in database
   saveChanges() {
-    console.log('File upload started');
 
     try {
-      if (this.selectedFile) {
-        console.log('File upload started');
-    
+      if (this.selectedFile) {    
         this.profileService.imageKitFileUpload(this.selectedFile).subscribe(
           (url) => {
             // If URL is returned from the service, assign it to the variable
@@ -94,21 +91,18 @@ export class ProfileComponent {
             this.cookieService.set('user-profileURL',url);
             this.profileService.updateImageUrl(this.cookieService.get('current-User'), this.user_profile_picture_url).subscribe(
               (responseMessage) => {
-                console.log('Message from webMethods: ' + responseMessage);
                 this.profileUpdated = true;
                 this.profileUpdateMessage = 'Profile picture updated successfully!';
               },
               (error) => {
                 this.isError = true;
                 this.imageErrorMessage = error.message || 'An error occurred while updating the profile picture.';
-                console.error('Error updating profile URL:', error);
               }
             );
           },
           (error) => {
             this.isError = true;
             this.imageErrorMessage = error.message || 'An error occurred during file upload.';
-            console.error('Error uploading file:', error);
           }
         );
       } else {
@@ -119,7 +113,6 @@ export class ProfileComponent {
     } catch (error) {
       this.isError = true;
       this.imageErrorMessage = 'Something went wrong, try again later.';
-      console.error('Unexpected error:', error);
     }
   }
 }

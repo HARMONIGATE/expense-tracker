@@ -4,12 +4,16 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
-
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+
+  private loggedIn = new BehaviorSubject<boolean>(false);
+  userLoggedIn$ = this.loggedIn.asObservable(); // Observable to subscribe to
 
 
    private apiUrl = environment.baseurl + environment.loginUserURL; // Replace with your send OTP API URL
@@ -39,6 +43,7 @@ export class LoginService {
           this.cookieService.set('user-registrationDate', response.registrationDate);
           this.cookieService.set('user-profileURL', response.profileURL);
           this.cookieService.set('user-name', response.name);
+          this.loggedIn.next(true);
           return response.message; // Extract response
         }
         throw new Error('Invalid response format');
@@ -56,7 +61,7 @@ export class LoginService {
           
         } else {
           // Handle other errors
-          errorMsg = 'Unable to register you, please try after some time';
+          errorMsg = 'Unable to login you, please try after some time';
           
         }
 
@@ -68,5 +73,6 @@ export class LoginService {
 
   signOut(){
     this.cookieService.deleteAll();
+    this.loggedIn.next(false);
   }
 }

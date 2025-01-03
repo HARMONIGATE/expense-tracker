@@ -16,6 +16,9 @@
         <p *ngIf="transaction.categoryName==='Earning'" class="text-xl font-semibold text-green-500" >
           {{transaction.amount | currency:'INR'}}
         </p>
+        <p *ngIf="transaction.categoryName==='Saving'" class="text-xl font-semibold text-blue-500" >
+          {{transaction.amount | currency:'INR'}}
+        </p>
         <p *ngIf="transaction.categoryName==='Expense'" class="text-xl font-semibold text-red-500" >
           {{transaction.amount | currency:'INR'}}
         </p>

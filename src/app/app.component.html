@@ -9,21 +9,20 @@
     </a>
     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <!-- Profile button -->
+
+      <!-- Profile button -->
+      <!-- Profile button -->
       <button type="button"
         class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-        id="user-menu-button" aria-expanded="false">
+        id="user-menu-button" (click)="toggleDropdown()">
         <span class="sr-only">Open user menu</span>
-        <img *ngIf="userLoggedIn" class="w-8 h-8 rounded-full"
-        [src]="profileURL" alt="Dynamic Image"
-          alt="Profile picture">
+        <img routerLink="/profile" routerLinkActive="active" *ngIf="userLoggedIn" class="w-8 h-8 rounded-full"
+          [src]="profileURL" alt="Profile picture">
       </button>
-      <!-- Profile dropdown -->
-      <div class="z-50 hidden" id="user-dropdown" *ngIf="userLoggedIn">
-        <ul>
-          <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
-          <li><a href="#" (click)="signOut()">Sign out</a></li>
-        </ul>
-      </div>
+
+
+
+
       <!-- Mobile menu toggle button -->
       <button data-collapse-toggle="navbar-user" type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100"
@@ -66,6 +65,12 @@
             [ngClass]="{'text-white bg-blue-700': activeLink === 'login', 'text-gray-900': activeLink !== 'login'}"
             class="block py-2 px-3 rounded hover:bg-gray-100">
             LogIn
+          </a>
+        </li>
+        <li *ngIf="userLoggedIn">
+          <a (click)="signOut()" class="block py-2 px-3 rounded hover:bg-gray-100">
+            <!-- Sign out icon with additional styling -->
+            <i class="fa fa-sign-out-alt text-xl"></i>
           </a>
         </li>
       </ul>

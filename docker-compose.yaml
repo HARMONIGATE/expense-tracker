@@ -1,0 +1,15 @@
+services:
+  card-game:
+    container_name: expense-tracker-container
+    build: .
+    image: expense-tracker:v1.0
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge
