@@ -1,16 +1,16 @@
 import { profile } from "console";
 
 export const environment = {
-    production: false,
-    baseurl:'http://localhost:5555',
-    userid:'appuser',
-    password:'Qwertyuiop@123',
+  production: false,
+  baseurl:'protocol://host:port',
+  userid:'integrationServerUserID',
+  password:'integrationServerPassword',
 
-    //image kit API details
-    imageKitApiUrl:'https://upload.imagekit.io/api/v1/files/upload',
-    imageKitUserId:'private_UgWggqbcD3ZLpfdCP51EdCedYxc=',
-    imageKitUserPass:'public_SbaJtGke+ABay/7cjRruS3J/7B0=',
-    imageKitFolder:'MoneyTracker',
+  //image kit API details
+  imageKitApiUrl:'https://upload.imagekit.io/api/v1/files/upload',
+  imageKitUserId:'ImageKitPrivateKey',
+  imageKitUserPass:'ImageKitPublicKey',
+  imageKitFolder:'MoneyTracker',
 
     //Sign up otp url
     signupOtpUrl:'/restV2/HG_MoneyTracker.SendOTP.provider:sendOTP/sendOTP',

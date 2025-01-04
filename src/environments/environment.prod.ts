@@ -2,14 +2,14 @@ import { profile } from "console";
 
 export const environment = {
     production: true,
-    baseurl:'http://88.222.241.120:5556',
-    userid:'appuser',
-    password:'Qwertyuiop@123',
+    baseurl:'protocol://host:port',
+    userid:'integrationServerUserID',
+    password:'integrationServerPassword',
 
     //image kit API details
     imageKitApiUrl:'https://upload.imagekit.io/api/v1/files/upload',
-    imageKitUserId:'private_UgWggqbcD3ZLpfdCP51EdCedYxc=',
-    imageKitUserPass:'public_SbaJtGke+ABay/7cjRruS3J/7B0=',
+    imageKitUserId:'ImageKitPrivateKey',
+    imageKitUserPass:'ImageKitPublicKey',
     imageKitFolder:'MoneyTracker',
 
     //Sign up otp url
