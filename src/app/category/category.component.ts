@@ -5,7 +5,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import{Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-category',
@@ -33,11 +34,12 @@ export class CategoryComponent {
   categoryMessage:string='';
 
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService,private router:Router,private cookieService: CookieService) { }
 
 
 
   ngOnInit(): void {
+    this.currentUserEmail=this.cookieService.get('current-User')
     this.fetchCategories();
   }
   fetchCategories(): void {
@@ -84,6 +86,7 @@ export class CategoryComponent {
             this.categoryMessage='';
             this.closeModal();
             window.location.reload();
+            this.router.navigate(['/category']);
           }, 2000);  // 2000 ms = 2 seconds
         },
         error: (err) => {
